@@ -6,7 +6,6 @@ const config = {
     date_format: "MM-DD-YYYY HH:mm A",
     copyright: "© 2021 Your Name",
     colorhex: "#eb3734",
-    voicechanneltojoin: "1142563226652004418",
     port: "8000",
     debugmode: false,
     autoImportSQL: true, // It is recommended to turn this off after your first time boot to avoid errors
