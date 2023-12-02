@@ -1,10 +1,13 @@
-const { GatewayIntentBits, Client, Collection } = require('discord.js');
+const { Intents, Client, Collection } = require('discord.js');
 const { readdirSync } = require('fs');
 const { join } = require('path');
 const api = require('../api/api.js')
 const mysql = require('mysql');
 const chalk = require('chalk')
 let con;
+const myIntents = new Intents();
+myIntents.add('GUILD_PRESENCES', 'GUILD_MEMBERS');
+
 
 class HDClient extends Client {
     constructor(options = {}) {
@@ -22,9 +25,7 @@ class HDClient extends Client {
 
 const client = new HDClient({
     partials: ["MESSAGE", "CHANNEL", "REACTION"],
-	intents: [
-        Guilds, GuildMessages, MessageContent, GuildMembers,
-    ]
+	intents: 32767,
 });
 
 global.__basedir = __dirname;
