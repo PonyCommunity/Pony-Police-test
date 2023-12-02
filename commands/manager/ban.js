@@ -57,7 +57,7 @@ exports.run = async (client, message, args, con) => {
                                     message.channel.awaitMessages(filter, { max: 1, time: 1000000, errors: ['time'] })
                                     .then(async collected => {
                                         let content3;
-                                        content3 = collected.content;
+                                        content3 = collected;
 										console.log(content3);
                                         let test = await client.users.fetch(content1)
                         if(!test) return message.channel.send('That user does not exist.');
