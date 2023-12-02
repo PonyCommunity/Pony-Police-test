@@ -57,7 +57,8 @@ exports.run = async (client, message, args, con) => {
                                     message.channel.awaitMessages(filter, { max: 1, time: 1000000, errors: ['time'] })
                                     .then(async collected => {
                                         let content3;
-                                        content3 = collected.first().content;
+                                        content3 = collected.content;
+										console.log(content3);
                                         let test = await client.users.fetch(content1)
                         if(!test) return message.channel.send('That user does not exist.');
                         await con.query(`SELECT * FROM bannedusers WHERE userid='${content1}'`, async (err, row) => {
@@ -70,11 +71,19 @@ exports.run = async (client, message, args, con) => {
                                         let reason = content2
                                         let image;
 
-                                        try {
-                                            image = content3
-                                        } catch (e) {
-                                            image = `${client.config.defaultimage}`
+                                        if (content3 == "no") {
+											image = `${client.config.defaultimage}`
+											message.channel.send!("Ok! no image added")
+										} else {
+											image = content3
+
                                         }
+										
+										//try {
+                                        //    image = content3
+                                        //} catch (e) {
+                                        //    image = `${client.config.defaultimage}`
+                                        //}
                                         let refinedReason = reason.split("[")[0].replace("'", "").replace("`", "").replace("\\", "").replace(";", "")
 
                                         const moment = require('moment');
