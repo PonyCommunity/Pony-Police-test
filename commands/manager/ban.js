@@ -73,7 +73,7 @@ exports.run = async (client, message, args, con) => {
 
                                         if (content3 == "no") {
 											image = `${client.config.defaultimage}`
-											message.channel.send!("Ok! no image added")
+											message.channel.send("Ok! no image added")
 										} else {
 											image = content3
 
