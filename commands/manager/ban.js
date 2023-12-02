@@ -30,7 +30,7 @@ exports.run = async (client, message, args, con) => {
 
         const prompt2 = new Discord.MessageEmbed()
         .setColor(client.config.colorhex)
-        .setDescription(`**Please input an image link as evidence to backup the ban placed on this user.**`)
+        .setDescription(`**Please input an image link as evidence to backup the ban placed on this user. If none just say no**`)
 
         try {
         message.channel.send(starter).then(async message => {
@@ -58,6 +58,8 @@ exports.run = async (client, message, args, con) => {
                                     .then(async collected => {
                                         let content3;
                                         content3 = collected.first();
+										attachment = message.attachments.first();
+										url3 = attachment ? attachment.url : null;
 										console.log("content");
 										console.log(content3.content);
 										console.log("attachement");
@@ -78,7 +80,7 @@ exports.run = async (client, message, args, con) => {
 											image = `${client.config.defaultimage}`
 											message.channel.send("Ok! no image added")
 										} else {
-											image = content3
+											image = url3
 
                                         }
 										
