@@ -23,7 +23,7 @@ class HDClient extends Client {
 const client = new HDClient({
     partials: ["MESSAGE", "CHANNEL", "REACTION"],
 	intents: [
-        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers,
+        Guilds, GuildMessages, MessageContent, GuildMembers,
     ]
 });
 
