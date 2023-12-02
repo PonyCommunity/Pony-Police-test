@@ -6,12 +6,18 @@ add the public version here: https://discord.com/api/oauth2/authorize?client_id=
 
 # Current features:
 . globalban list
+
 . serverlock
+
 . invite stopper
+
 . alt detector
 
 
+
 # Wanted features:
+. slash commands
+
 . post your ideas under issues 
 
 
