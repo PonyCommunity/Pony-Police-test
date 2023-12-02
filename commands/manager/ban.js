@@ -57,7 +57,7 @@ exports.run = async (client, message, args, con) => {
                                     message.channel.awaitMessages(filter, { max: 1, time: 1000000, errors: ['time'] })
                                     .then(async collected => {
                                         let content3;
-                                        content3 = collected;
+                                        content3 = collected.first();
 										console.log("content");
 										console.log(content3.content);
 										console.log("attachement");
