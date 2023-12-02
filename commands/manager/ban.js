@@ -30,7 +30,7 @@ exports.run = async (client, message, args, con) => {
 
         const prompt2 = new Discord.MessageEmbed()
         .setColor(client.config.colorhex)
-        .setDescription(`**Please input an image link as evidence to backup the ban placed on this user. If none just say no**`)
+        .setDescription(`**Please input an image as evidence to backup the ban placed on this user. If none just say no**`)
 
         try {
         message.channel.send(starter).then(async message => {
@@ -58,12 +58,6 @@ exports.run = async (client, message, args, con) => {
                                     .then(async collected => {
                                         let content3;
                                         content3 = collected.first();
-										
-										//url3 = collected.attachments.first().url
-										console.log("content");
-										console.log(content3.content);
-										console.log("attachement");
-										console.log(content3.attachments.first().url);
                                         let test = await client.users.fetch(content1)
                         if(!test) return message.channel.send('That user does not exist.');
                         await con.query(`SELECT * FROM bannedusers WHERE userid='${content1}'`, async (err, row) => {
@@ -79,19 +73,12 @@ exports.run = async (client, message, args, con) => {
                                         if (content3.content == "no") {
 											image = `${client.config.defaultimage}`
 											message.channel.send("Ok! no image added")
-										} 
-										if (content3.content == "") {
+										} else {
 											image = content3.attachments.first().url
-									    } else {
-											image = content3.content
 
                                         }
 										
-										//try {
-                                        //    image = content3
-                                        //} catch (e) {
-                                        //    image = `${client.config.defaultimage}`
-                                        //}
+										
                                         let refinedReason = reason.split("[")[0].replace("'", "").replace("`", "").replace("\\", "").replace(";", "")
 
                                         const moment = require('moment');

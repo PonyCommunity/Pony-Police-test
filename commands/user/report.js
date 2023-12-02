@@ -113,7 +113,8 @@ exports.run = async (client, message, args, con) => {
                                                             message.channel.send(prompt4).then(() => {
                                                                 message.channel.awaitMessages(filter, { max: 1, time: 1000000, errors: ['time'] })
                                                                 .then(async collected4 => {
-                                                                    let ress = collected4.first().content.replace("'", "").replace("`", "").replace("\\", "").replace(";", "")
+																	content4 = collected4.first();
+                                                                    let ress = content4.attachments.first().url
                                                                     await con.query(`UPDATE reports SET links="${ress}" WHERE uniqueid='${uniqueid}'`, (err, row) => {
                                                                         try {
                                                                         message.channel.send(prompt5).then(() => {
