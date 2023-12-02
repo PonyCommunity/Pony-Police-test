@@ -38,7 +38,7 @@ const config = {
             
             prompt3: "What are you reporting this user for?\n**Please provide full detail of all accusations.**",
             
-            prompt4: "Please provide **Link Proof** of these actions.\n```Provide images like: [https://image.link]```",
+            prompt4: "Please provide a image for proof of violation",
             
             prompt5: "Do you have any extra notes that we should be aware of? If so, please state them now.",
             
