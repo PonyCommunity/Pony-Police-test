@@ -1,4 +1,4 @@
-const { Client, Collection } = require('discord.js');
+const { GatewayIntentBits, Client, Collection } = require('discord.js');
 const { readdirSync } = require('fs');
 const { join } = require('path');
 const api = require('../api/api.js')
@@ -21,7 +21,10 @@ class HDClient extends Client {
 };
 
 const client = new HDClient({
-    partials: ["MESSAGE", "CHANNEL", "REACTION"]
+    partials: ["MESSAGE", "CHANNEL", "REACTION"],
+	intents: [
+        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers,
+    ]
 });
 
 global.__basedir = __dirname;
