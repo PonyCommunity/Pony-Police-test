@@ -57,8 +57,11 @@ exports.run = async (client, message, args, con) => {
                                     message.channel.awaitMessages(filter, { max: 1, time: 1000000, errors: ['time'] })
                                     .then(async collected => {
                                         let content3;
-                                        content3 = collected.content;
-										console.log(content3);
+                                        content3 = collected;
+										console.log("content");
+										console.log(content3.content);
+										console.log("attachement");
+										console.log(content3.attachments);
                                         let test = await client.users.fetch(content1)
                         if(!test) return message.channel.send('That user does not exist.');
                         await con.query(`SELECT * FROM bannedusers WHERE userid='${content1}'`, async (err, row) => {
@@ -71,7 +74,7 @@ exports.run = async (client, message, args, con) => {
                                         let reason = content2
                                         let image;
 
-                                        if (content3 == "no") {
+                                        if (content3.content == "no") {
 											image = `${client.config.defaultimage}`
 											message.channel.send("Ok! no image added")
 										} else {
