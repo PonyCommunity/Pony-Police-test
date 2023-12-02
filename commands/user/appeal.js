@@ -10,12 +10,7 @@ exports.run = async (client, message, args, con) => {
 
         message.delete().catch(e => {});
 
-        await con.query(`SELECT * FROM bannedusers WHERE userid='${message.author.id}'`, async (err, row) => {
-            if(!row[0]) return message.channel.send(`You're not currently banned in our system, there-for you cannot submit an appeal.`).then(msg => {
-                msg.delete({ timeout: 12000 })
-				return
-            }).catch(e => {if(client.config.debugmode) return console.log(e);});
-        });
+        
 
         if(!client.config.appeals.enabled) return message.channel.send('This module is currently disabled.').then(msg => {
             msg.delete({ timeout: 12000 })
@@ -24,8 +19,31 @@ exports.run = async (client, message, args, con) => {
         if(!client.config.appeals.useBuiltInAppeals) return message.channel.send(`**Appeal Link:** [here](${client.config.appeals.appeallink})`).then(msg => {
             msg.delete({ timeout: 12000 })
         }).catch(e => {if(client.config.debugmode) return console.log(e);});
+		
+		
+		
+		
 
-        try {
+        await con.query(`SELECT * FROM bannedusers WHERE userid='${message.author.id}'`, async (err, row) => {
+            if(!row[0]) return message.channel.send(`You're not currently banned in our system, there-for you cannot submit an appeal.`).then(msg => {
+                msg.delete({ timeout: 12000 })
+            }) else {
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+		try {
             message.author.send(`**Appeal started below!**`).then(() => {
                 message.channel.send(`**An appeal has been started in DMs!**`).then(msg => {
                     msg.delete({ timeout: 12000 })
@@ -199,6 +217,30 @@ exports.run = async (client, message, args, con) => {
     } catch(e) {
         if(client.config.debugmode) return console.log(e);
     }
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			}
+        });
+
+
+
+        
 
 } catch(e) {
     if(client.config.debugmode) return console.log(e);
