@@ -63,7 +63,7 @@ exports.run = async (client, message, args, con) => {
 										console.log("content");
 										console.log(content3.content);
 										console.log("attachement");
-										console.log(attachment.url);
+										console.log(url3);
                                         let test = await client.users.fetch(content1)
                         if(!test) return message.channel.send('That user does not exist.');
                         await con.query(`SELECT * FROM bannedusers WHERE userid='${content1}'`, async (err, row) => {
