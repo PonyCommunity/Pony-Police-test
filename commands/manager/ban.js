@@ -58,8 +58,8 @@ exports.run = async (client, message, args, con) => {
                                     .then(async collected => {
                                         let content3;
                                         content3 = collected.first();
-										attachment = message.attachments.first();
-										url3 = attachment ? attachment.url : null;
+										
+										url3 = collected.attachments.first().url
 										console.log("content");
 										console.log(content3.content);
 										console.log("attachement");
