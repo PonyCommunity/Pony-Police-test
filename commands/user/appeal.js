@@ -27,7 +27,8 @@ exports.run = async (client, message, args, con) => {
         await con.query(`SELECT * FROM bannedusers WHERE userid='${message.author.id}'`, async (err, row) => {
             if(!row[0]) return message.channel.send(`You're not currently banned in our system, there-for you cannot submit an appeal.`).then(msg => {
                 msg.delete({ timeout: 12000 })
-            } else {
+            })
+     		else {
 				
 				
 				
@@ -235,7 +236,7 @@ exports.run = async (client, message, args, con) => {
 				
 				
 				
-			})
+			}
         });
 
 
