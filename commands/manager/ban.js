@@ -63,7 +63,7 @@ exports.run = async (client, message, args, con) => {
 										console.log("content");
 										console.log(content3.content);
 										console.log("attachement");
-										console.log(url3);
+										console.log(content3.attachments.first().url);
                                         let test = await client.users.fetch(content1)
                         if(!test) return message.channel.send('That user does not exist.');
                         await con.query(`SELECT * FROM bannedusers WHERE userid='${content1}'`, async (err, row) => {
@@ -80,7 +80,7 @@ exports.run = async (client, message, args, con) => {
 											image = `${client.config.defaultimage}`
 											message.channel.send("Ok! no image added")
 										} else {
-											image = url3
+											image = content3.attachments.first().url
 
                                         }
 										
