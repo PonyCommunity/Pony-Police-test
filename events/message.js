@@ -35,7 +35,7 @@ module.exports = async(client, con, message) => {
     }
 
     
-    console.log("The extracted URL from given string is: " + res);
+
 
 
     // Invite Blocker Checker
