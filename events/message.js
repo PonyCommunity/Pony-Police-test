@@ -33,7 +33,7 @@ module.exports = async(client, con, message) => {
         return
     } else {
         console.log("The extracted URL from given string is: " + res);
-        const response = await curl('https://api.cloudflare.com/client/v4/accounts/a58bb18d496cbb65f3ff5d169177aeb0/urlscanner/scan', {
+        const response = await curl.post('https://api.cloudflare.com/client/v4/accounts/a58bb18d496cbb65f3ff5d169177aeb0/urlscanner/scan', {
             headers: {
                 Authorization: "Bearer rSxV8LeLMTekj3h7Bvu4fe9VwuMjbOSj-zqe_1Rm",
                 Content_Type: "application/json"
