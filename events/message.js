@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const { exec } = require('child_process');
 module.exports = async(client, con, message) => {
 
     // Base Checks
@@ -25,33 +26,12 @@ module.exports = async(client, con, message) => {
     }
 
     // Blocked URL Checker
-    await con.query(`SELECT * FROM urlstopper WHERE guildid='${message.guild.id}'`, async (err, rows) => {
-        if(err) throw err;
-        for(let data of rows) {
-            if(message.content.includes(data.message)) {
-                await con.query(`SELECT * FROM whitelist WHERE userid='${message.author.id}' AND guildid='${message.guild.id}'`, async (err, row) => {
-                    if(err) throw err;
-                    if(!row[0]) {
-                        message.delete().catch(e => {})
-                        await con.query(`SELECT * FROM loggingchannels WHERE guildid='${message.guild.id}' AND type='1'`, async (err, row) => {
-                            if(err) throw err;
-                            if(row[0]) {
-                                let deChannel = await client.channels.cache.get(row[0].channelid)
-                                let embed = new MessageEmbed()
-                                .setColor(client.config.colorhex)
-                                .setTitle(`URL Moderated!`)
-                                .setDescription(`I have deleted a blacklisted url!\n\n**Channel:** <#${message.channel.id}>\n**Member:** <@${message.author.id}> (${message.author.tag})\n**Blocked URL:** ${data.message}\n**Message Content:**\n\`\`\`\n${message.content}\n\`\`\``)
-                                .setTimestamp()
-                                .setFooter(client.config.copyright)
-                                try { embed.setThumbnail(client.user.avatarURL({ dynamic: true })) } catch(e) {}
-                                await deChannel.send(embed).catch(e => {});
-                            }
-                        });
-                    }
-                });
-            }
-        }
-    });
+    let str = message.content; 
+    let res = str.split(" ").find(word => word.startsWith("http"));
+
+    
+    console.log("The extracted URL from given string is: " + res);
+
 
     // Invite Blocker Checker
     if(message.content.includes(`discord.gg`) || message.content.includes(`discord.com/invite`)) {
