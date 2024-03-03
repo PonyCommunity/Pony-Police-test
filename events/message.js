@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { exec } = require('child_process');
+const curl = require(`curl`);
 module.exports = async(client, con, message) => {
 
     // Base Checks
@@ -32,6 +33,17 @@ module.exports = async(client, con, message) => {
         return
     } else {
         console.log("The extracted URL from given string is: " + res);
+        const response = curl('https://api.cloudflare.com/client/v4/accounts/a58bb18d496cbb65f3ff5d169177aeb0/urlscanner/scan', {
+            headers: {
+                Authorization: "Bearer rSxV8LeLMTekj3h7Bvu4fe9VwuMjbOSj-zqe_1Rm",
+                Content-Type: "application/json"
+            },
+            data: {
+                url: res,
+            }
+        });
+        const data = await response.json();
+        console.log(data);
     }
 
     
