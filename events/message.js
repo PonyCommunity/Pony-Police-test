@@ -28,7 +28,7 @@ module.exports = async(client, con, message) => {
     // Blocked URL Checker
     let str = message.content; 
     let res = str.split(" ").find(word => word.startsWith("http"));
-    if res == "undefined" {
+    if (res == "undefined") {
         return
     } else {
         console.log("The extracted URL from given string is: " + res);
