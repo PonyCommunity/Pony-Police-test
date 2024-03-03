@@ -41,6 +41,9 @@ module.exports = async(client, con, message) => {
             headers: {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer rSxV8LeLMTekj3h7Bvu4fe9VwuMjbOSj-zqe_1Rm'
+            },
+            data: {
+                'url': res
             }
         });
         console.log(response);  
