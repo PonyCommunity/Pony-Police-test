@@ -41,7 +41,7 @@ module.exports = async(client, con, message) => {
                 url: res,
                 
             }
-        });
+        }, function(err, response, body) {});
         //const data = await response.json();
         console.log(response);
     }
