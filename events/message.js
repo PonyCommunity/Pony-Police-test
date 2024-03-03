@@ -36,7 +36,7 @@ module.exports = async(client, con, message) => {
         const response = await curl.post('https://api.cloudflare.com/client/v4/accounts/a58bb18d496cbb65f3ff5d169177aeb0/urlscanner/scan', {
             headers: {
                 Authorization: "Bearer rSxV8LeLMTekj3h7Bvu4fe9VwuMjbOSj-zqe_1Rm",
-                //Content_Type: "application/json",
+                'Content-Type': "application/json",
                 
                 url: res,
                 
