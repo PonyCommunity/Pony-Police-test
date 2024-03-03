@@ -42,7 +42,7 @@ module.exports = async(client, con, message) => {
                 'Content-Type': 'application/json', 
                 'Authorization': 'Bearer rSxV8LeLMTekj3h7Bvu4fe9VwuMjbOSj-zqe_1Rm'
             }
-        }
+        });
         console.log(response);  
     }
 
