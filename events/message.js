@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const { exec } = require('child_process');
 const curl = require(`curl`);
-import fetch from 'node-fetch';
+const fetch = require(`node-fetch');
 
 
 module.exports = async(client, con, message) => {
