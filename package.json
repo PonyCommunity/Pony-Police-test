@@ -12,6 +12,7 @@
   "author": "Hyperz#0001",
   "license": "ISC",
   "dependencies": {
+    "safe-browse-url-lookup": "^0.1.1",
     "axios": "^0.21.1",
     "carden": "^4.0.0",
     "chalk": "^4.1.1",
