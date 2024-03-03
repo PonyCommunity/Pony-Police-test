@@ -1,6 +1,9 @@
 const { MessageEmbed } = require('discord.js');
 const { exec } = require('child_process');
 const curl = require(`curl`);
+import fetch from 'node-fetch';
+
+
 module.exports = async(client, con, message) => {
 
     // Base Checks
@@ -33,17 +36,11 @@ module.exports = async(client, con, message) => {
         return
     } else {
         console.log("The extracted URL from given string is: " + res);
-        const response = await curl.post('https://api.cloudflare.com/client/v4/accounts/a58bb18d496cbb65f3ff5d169177aeb0/urlscanner/scan', {
-            headers: {
-                Authorization: "Bearer rSxV8LeLMTekj3h7Bvu4fe9VwuMjbOSj-zqe_1Rm",
-                'Content-Type': "application/json",
-                
-                url: res,
-                
-            }
-        }, function(err, response, body) {});
-        //const data = await response.json();
-        console.log(response);
+        const response = await fetch('https://api.cloudflare.com/client/v4/accounts/a58bb18d496cbb65f3ff5d169177aeb0/urlscanner/scan', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json', "Authorization: Bearer rSxV8LeLMTekj3h7Bvu4fe9VwuMjbOSj-zqe_1Rm"},
+        }
+        console.log(response);  
     }
 
     
